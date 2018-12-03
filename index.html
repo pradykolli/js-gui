@@ -13,26 +13,29 @@
 </head>
 
 <body>
+
   <main class="container-fluid">
 
-    <h1>JavaScript for interactive apps!</h1>
-    <h3>Right-click / Inspect, then select console</h3>
+    <h1 class="text-center">JavaScript for interactive apps!</h1>
+    <br>
+    <br>
+    <h3 class="text-center"> Find out which word is shortest.</h3>
 
-    <p>Enter your name:
+    <!-- <p>Enter your name:
       <input id="guest" type="string" value="Eden">
+    </p> -->
+
+    <p>Enter first String:
+      <input id="firstString" type="string" value="str1">
     </p>
 
-    <p>Enter first number:
-      <input id="firstNumber" type="number" value="7">
+    <p>Enter second String:
+      <input id="secondString" type="string" value="str2">
     </p>
 
-    <p>Enter second number:
-      <input id="secondNumber" type="number" value="12">
-    </p>
-
-    <button id="clicker" class="btn btn-primary">Click me!</button>
-
-    <p id="result"></p>
+    <button id="clicker" class="btn btn-primary text-center">Click me!</button>
+    <br><br>
+    <p id="result" class="text-center"></p>
 
   </main>
 
@@ -53,13 +56,23 @@
     })
 
     document.getElementById("clicker").addEventListener("click", function () {
-      const s = document.getElementById("guest").value
-      const i = parseInt(document.getElementById("firstNumber").value)
-      console.log("i=" + i)
-      const j = parseInt(document.getElementById("secondNumber").value)
-      console.log("j=" + j)
-      const ans = s + ", your sum is " + add(i, j) + "."
-      document.getElementById("result").innerHTML = ans
+
+      const str1 = document.getElementById("firstString").value
+      console.log("str1=" + str1)
+      const str2 = document.getElementById("secondString").value
+      console.log("str2=" + str2)
+      const ans = Math.min(str1.length, str2.length)
+      const finalAns = "The shortest of the both the strings is/are :"
+      console.log(finalAns)
+      if(str1.length==ans && str2.length!=ans){
+        document.getElementById("result").innerHTML = finalAns + str1
+      }
+      else if(str1.length==ans && str2.length==ans){
+        document.getElementById("result").innerHTML = "Both are of equal length " + str2+" , "+str1
+      }
+      else{
+        document.getElementById("result").innerHTML = finalAns + str2
+      }
     })
 
     console.log("SCRIPT END")
